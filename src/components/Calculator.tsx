@@ -46,24 +46,20 @@ const Calculator: React.FC = () => {
     
     // Format time
     let formatted = '';
-    let speed: 'fast' | 'moderate' | 'slow' = 'fast';
+    let speed: 'fast';
     
     if (timeInSeconds < 1) {
       formatted = '<1 second';
-      speed = 'fast';
     } else if (timeInSeconds < 60) {
       formatted = `${Math.ceil(timeInSeconds)}s`;
-      speed = timeInSeconds < 10 ? 'fast' : 'moderate';
     } else if (timeInSeconds < 3600) {
       const minutes = Math.floor(timeInSeconds / 60);
       const seconds = Math.ceil(timeInSeconds % 60);
       formatted = `${minutes}m ${seconds}s`;
-      speed = timeInSeconds < 300 ? 'moderate' : 'slow';
     } else {
       const hours = Math.floor(timeInSeconds / 3600);
       const minutes = Math.floor((timeInSeconds % 3600) / 60);
       formatted = `${hours}h ${minutes}m`;
-      speed = 'slow';
     }
     
     return { seconds: timeInSeconds, formatted, speed };
