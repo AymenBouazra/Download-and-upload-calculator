@@ -42,7 +42,7 @@ const Calculator: React.FC = () => {
   };
 
   const calculateTime = (fileSize: number, fileSizeUnit: string, internetSpeed: number, speedUnit: string): CalculationResult => {
-    // Convert file size to bits (not bytes)
+    // Convert file size to bits (1 byte = 8 bits)
     const fileSizeInBits = fileSize * fileSizeUnits[fileSizeUnit as keyof typeof fileSizeUnits] * 8;
     
     // Convert speed to bits per second
@@ -64,13 +64,7 @@ const Calculator: React.FC = () => {
     } else if (timeInSeconds < 3600) {
       const minutes = Math.floor(timeInSeconds / 60);
       const seconds = Math.ceil(timeInSeconds % 60);
-      if (seconds === 60) {
-        formatted = `${minutes + 1}m`;
-      } else if (seconds < 10) {
-        formatted = `${minutes}m`;
-      } else {
-        formatted = `${minutes}m ${seconds}s`;
-      }
+      formatted = `${minutes}m ${seconds}s`;
       speed = timeInSeconds < 300 ? 'moderate' : 'slow';
     } else {
       const hours = Math.floor(timeInSeconds / 3600);
@@ -80,7 +74,7 @@ const Calculator: React.FC = () => {
     }
     
     return { seconds: timeInSeconds, formatted, speed };
-  };
+};
   const downloadTime = calculateTime(downloadFileSize, downloadFileSizeUnit, downloadSpeed, downloadSpeedUnit);
   const uploadTime = calculateTime(uploadFileSize, uploadFileSizeUnit, uploadSpeed, uploadSpeedUnit);
 
