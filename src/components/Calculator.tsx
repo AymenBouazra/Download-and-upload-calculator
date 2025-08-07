@@ -81,21 +81,11 @@ const Calculator: React.FC = () => {
   };
 
   const getSpeedBg = (speed: string) => {
-    switch (speed) {
-      case 'fast': return 'bg-green-50 border-green-200';
-      case 'moderate': return 'bg-orange-50 border-orange-200';
-      case 'slow': return 'bg-red-50 border-red-200';
-      default: return 'bg-gray-50 border-gray-200';
-    }
+    return 'fast'
   };
 
   const getSpeedText = (speed: string) => {
-    switch (speed) {
-      case 'fast': return 'Fast Connection';
-      case 'moderate': return 'Moderate Connection';
-      case 'slow': return 'Slow Connection';
-      default: return 'Connection';
-    }
+    return 'fast'
   };
 
   return (
@@ -179,9 +169,6 @@ const Calculator: React.FC = () => {
                 <div className={`text-3xl font-bold ${getSpeedColor(downloadTime.speed)} mb-1`}>
                   {downloadTime.formatted}
                 </div>
-                <div className="text-sm text-gray-500">
-                  {getSpeedText(downloadTime.speed)}
-                </div>
               </div>
 
             </div>
@@ -250,9 +237,6 @@ const Calculator: React.FC = () => {
                 <div className="text-sm font-medium text-gray-600 mb-2">Upload Time</div>
                 <div className={`text-3xl font-bold ${getSpeedColor(uploadTime.speed)} mb-1`}>
                   {uploadTime.formatted}
-                </div>
-                <div className="text-sm text-gray-500">
-                  {getSpeedText(uploadTime.speed)}
                 </div>
               </div>
 
