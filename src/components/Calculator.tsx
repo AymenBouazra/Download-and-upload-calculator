@@ -20,19 +20,12 @@ const Calculator: React.FC = () => {
   const [uploadSpeed, setUploadSpeed] = useState<number>(50);
   const [uploadSpeedUnit, setUploadSpeedUnit] = useState<string>('Mbps');
 
-  const speedPresets = [
-    { name: 'Dial-up', speed: 0.056, unit: 'Mbps' },
-    { name: 'DSL', speed: 25, unit: 'Mbps' },
-    { name: 'Cable', speed: 100, unit: 'Mbps' },
-    { name: 'Fiber', speed: 1000, unit: 'Mbps' },
-    { name: '5G', speed: 2000, unit: 'Mbps' },
-  ];
 
   const fileSizeUnits = {
-    'KB': 1000,
-    'MB': 1000 * 1000,
-    'GB': 1000 * 1000 * 1000,
-    'TB': 1000 * 1000 * 1000 * 1000,
+    'KB': 1,
+    'MB': 1000,
+    'GB': 1000 * 1000,
+    'TB': 1000 * 1000 * 1000,
   };
 
   const speedUnits = {
@@ -191,24 +184,6 @@ const Calculator: React.FC = () => {
                 </div>
               </div>
 
-              {/* Quick Presets */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Quick Presets</label>
-                <div className="flex flex-wrap gap-2">
-                  {speedPresets.map((preset) => (
-                    <button
-                      key={`download-${preset.name}`}
-                      onClick={() => {
-                        setDownloadSpeed(preset.speed);
-                        setDownloadSpeedUnit(preset.unit);
-                      }}
-                      className="px-4 py-2 text-sm bg-gray-100 hover:bg-blue-100 hover:text-blue-700 rounded-lg transition-all duration-200 border border-gray-200 hover:border-blue-300 font-medium"
-                    >
-                      {preset.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
 
@@ -281,24 +256,6 @@ const Calculator: React.FC = () => {
                 </div>
               </div>
 
-              {/* Quick Presets */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Quick Presets</label>
-                <div className="flex flex-wrap gap-2">
-                  {speedPresets.map((preset) => (
-                    <button
-                      key={`upload-${preset.name}`}
-                      onClick={() => {
-                        setUploadSpeed(preset.speed);
-                        setUploadSpeedUnit(preset.unit);
-                      }}
-                      className="px-4 py-2 text-sm bg-gray-100 hover:bg-green-100 hover:text-green-700 rounded-lg transition-all duration-200 border border-gray-200 hover:border-green-300 font-medium"
-                    >
-                      {preset.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </div>
